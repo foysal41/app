@@ -26,15 +26,36 @@ class BankAccount {
   }
 
   viewFullInformation() {
-    document.write(`<br> You Account Number is: ${this.accountNumber} <br>`);
-    document.write(`You Name is: ${this.accountHolder} <br> `);
-    document.write(`Your Current Balance Is $${this.balance} <br>`);
+
+    //INfo html
+
+    let infoHtml =  `
+      <h2> Account Information </h2>
+      <ul class="account-info">
+        <li> <strong> Account Name: </Strong> ${this.accountHolder}  </li>
+        <li><strong> Account Number: </strong> ${this.accountHolder} </li>
+        <li><strong> Balance: </strong> ${this.balance} </li>
+    `;
+
+    document.getElementById("account-info").innerHTML = infoHtml;
+
+
 
     // Display transaction history
-    document.write("<br> Transaction History: <br>");
-    this.transactions.forEach(transaction => {
-      document.write(`Type: ${transaction.type}, Amount: ${transaction.amount}, Date: ${transaction.date} <br>`);
-    });
+   // Initialize the HTML string
+let infoHtmlTwo = "<h2>Transaction History</h2><ul class='account-info-two'>";
+
+// Iterate over each transaction and append its details to the HTML string
+this.transactions.forEach(transaction => {
+  infoHtmlTwo += `<li>Type: ${transaction.type}, Amount: ${transaction.amount}, Date: ${transaction.date}</li>`;
+});
+
+// Close the <ul> tag
+infoHtmlTwo += "</ul>";
+
+// Set the HTML content to the "account-info-two" element
+document.getElementById("account-info-two").innerHTML = infoHtmlTwo;
+
   }
 }
 
