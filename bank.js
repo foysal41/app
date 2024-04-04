@@ -34,7 +34,7 @@ class BankAccount {
       <h2> Account Information </h2>
       <ul class="account-info">
         <li> <strong> Account Name: </Strong> ${this.accountHolder}  </li>
-        <li><strong> Account Number: </strong> ${this.accountHolder} </li>
+        <li><strong> Account Number: </strong> ${this.accountNumber} </li>
         <li><strong> Balance: </strong> ${this.balance} </li>
     `;
 
