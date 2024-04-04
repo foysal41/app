@@ -9,7 +9,7 @@ class BankAccount {
   recharge(amount) {
     this.balance += amount;
     this.transactions.push({ type: "deposit", amount, date: new Date() });
-    document.write(`Your account loaded ${amount}`);
+    this.viewFullInformation();
   }
 
   withdraw(amount) {
@@ -18,6 +18,7 @@ class BankAccount {
     } else {
       this.balance -= amount;
       this.transactions.push({ type: "withdrawal", amount, date: new Date() });
+      this.viewFullInformation();
     }
   }
 
@@ -61,6 +62,11 @@ document.getElementById("account-info-two").innerHTML = infoHtmlTwo;
 
 const account_one = new BankAccount(1001, "Foysal Jaman", 1500);
 
-account_one.recharge(200);
-account_one.withdraw(100);
+document.getElementById("transaction-form").addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const amount = parseInt(document.getElementById("amount").value);
+  account_one.recharge(amount);
+});
+
 account_one.viewFullInformation();
