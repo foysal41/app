@@ -69,4 +69,13 @@ document.getElementById("transaction-form").addEventListener("submit", function(
   account_one.recharge(amount);
 });
 
+document.getElementById("withdraw-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const withdrawAmount = parseInt(document.getElementById("withdraw-amount").value); // Corrected ID
+  account_one.withdraw(withdrawAmount);
+});
+
+
+
 account_one.viewFullInformation();
