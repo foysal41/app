@@ -10,6 +10,9 @@ class BankAccount {
     this.balance += amount;
     this.transactions.push({ type: "deposit", amount, date: new Date() });
     this.viewFullInformation();
+
+     // Show deposit notification
+    this.showNotification("success", `Deposit of $${amount} successful.`);
   }
 
   withdraw(amount) {
@@ -19,6 +22,9 @@ class BankAccount {
       this.balance -= amount;
       this.transactions.push({ type: "withdrawal", amount, date: new Date() });
       this.viewFullInformation();
+
+      // Show withdrawal notification
+      this.showNotification("success", `Withdrawal of $${amount} successful.`)
     }
   }
 
@@ -57,6 +63,18 @@ infoHtmlTwo += "</ul>";
 // Set the HTML content to the "account-info-two" element
 document.getElementById("account-info-two").innerHTML = infoHtmlTwo;
 
+  }
+
+ // Method to display notifications
+  showNotification(type, message){
+    const notification = document.createElement("div");
+    notification.classList.add("notification" , type);
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() =>{
+      notification.remove();
+    }, 4000);
   }
 }
 
