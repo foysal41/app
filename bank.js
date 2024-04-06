@@ -28,6 +28,26 @@ class BankAccount {
     }
   }
 
+  updatPersonalInfo(newAccountHolder){
+    this.accountHolder = newAccountHolder;
+
+    //যখন আমার নাম চেঞ্জ হবে তখন এই নোটিফিকেশন তা দেখাবে 
+  this.showNotification("Info" , `Personal information updated successfully`);
+
+  // আপডেট ইনফরমেশন তা দেখার জন্য 
+    this.viewFullInformation();
+  }
+
+  closeAccount(){
+    this.showNotification("Info" , `Account closed successfully.`)
+    document.getElementById("account-info").innerHTML = "";
+    document.getElementById("account-info-two").innerHTML = "";
+  }
+
+
+  
+
+
   getResult() {
     return this.balance;
   }
@@ -94,6 +114,22 @@ document.getElementById("withdraw-form").addEventListener("submit", function(eve
   account_one.withdraw(withdrawAmount);
 });
 
+
+// ব্যক্তিগত তথ্য আপডেট করার জন্য eventListner
+document.getElementById("update-info-btn").addEventListener("click" ,
+  function(event){
+    const newAccountHolder = prompt("Enter Your New Name");
+
+    if(newAccountHolder !== null && newAccountHolder !== ""){
+      account_one.updatPersonalInfo(newAccountHolder)
+    }
+  });
+
+  // ব্যক্তিগত তথ্য Delete করার জন্য 
+  document.getElementById("close-account-btn").addEventListener("click" , 
+  function(event){
+    account_one.closeAccount();
+  });
 
 
 account_one.viewFullInformation();
