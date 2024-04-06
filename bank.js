@@ -13,6 +13,9 @@ class BankAccount {
 
      // Show deposit notification
     this.showNotification("success", `Deposit of $${amount} successful.`);
+
+    const totalBalanceElement = document.getElementById("total-balance-card").querySelector("p");
+    totalBalanceElement.textContent = this.balance;
   }
 
   withdraw(amount) {
@@ -25,6 +28,10 @@ class BankAccount {
 
       // Show withdrawal notification
       this.showNotification("success", `Withdrawal of $${amount} successful.`)
+      
+      const totalBalanceElement = document.getElementById("total-balance-card").querySelector("p");
+      totalBalanceElement.textContent = this.balance;
+      
     }
   }
 
@@ -54,18 +61,6 @@ class BankAccount {
 
   viewFullInformation() {
 
-    //INfo html
-
-    let infoHtml =  `
-      <h2> Account Information </h2>
-      <ul class="account-info">
-        <li> <strong> Account Name: </Strong> ${this.accountHolder}  </li>
-        <li><strong> Account Number: </strong> ${this.accountNumber} </li>
-        <li><strong> Balance: </strong> ${this.balance} </li>
-    `;
-
-    document.getElementById("account-info").innerHTML = infoHtml;
-
 
 
     // Display transaction history
@@ -85,6 +80,7 @@ document.getElementById("account-info-two").innerHTML = infoHtmlTwo;
 
   }
 
+
  // Method to display notifications
   showNotification(type, message){
     const notification = document.createElement("div");
@@ -99,6 +95,21 @@ document.getElementById("account-info-two").innerHTML = infoHtmlTwo;
 }
 
 const account_one = new BankAccount(1001, "Foysal Jaman", 1500);
+
+//অ্যাকাউন্টের তথ্য সহ HTML এ পাঠানোর জন্য 
+window.addEventListener("DOMContentLoaded", (event) =>{
+  const accountNameElement = document.getElementById("account-name-card").querySelector("p");
+  const accountNumberElement = document.getElementById("account-number-card").querySelector("p");
+  const totalBalanceElement  = document.getElementById("total-balance-card").querySelector("p");
+
+  // অ্যাকাউন্টের dynamic  তথ্য গুলা html ভ্যারিয়েবল/এলিমেন্ট এর মধ্যে  আপডেট করা
+
+  accountNameElement.textContent = account_one.accountHolder;
+  accountNumberElement.textContent = account_one.accountNumber;
+  totalBalanceElement.textContent = account_one.balance;
+
+});
+
 
 document.getElementById("transaction-form").addEventListener("submit", function(event){
   event.preventDefault();
