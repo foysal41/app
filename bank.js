@@ -62,10 +62,9 @@ class BankAccount {
   viewFullInformation() {
 
 
-
     // Display transaction history
    // Initialize the HTML string
-let infoHtmlTwo = "<h2>Transaction History</h2><ul class='account-info-two'>";
+let infoHtmlTwo = "<h2 clsss = 'transaction-title'>Transaction History</h2><ul class='account-info-two'>";
 
 // Iterate over each transaction and append its details to the HTML string
 this.transactions.forEach(transaction => {

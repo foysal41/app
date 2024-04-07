@@ -128,3 +128,28 @@ button:hover {
   font-size: 20px;
   margin: 0;
 }
+
+.transaction-title{
+  text-align: center !important;
+}
+
+
+.container-two {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.transaction-form {
+  width: 45%; /* Adjust width as needed */
+  /* Remove align-items: center; to align forms to the left */
+}
+.transaction-form label,
+.transaction-form input,
+.transaction-form button {
+  margin-bottom: 10px;
+}
